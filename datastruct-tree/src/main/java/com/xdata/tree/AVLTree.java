@@ -107,7 +107,7 @@ public class AVLTree<K, V> {
 			rotateRight(node);
 			break;
 		case -1: // 右高，分情况调整
-			AVLTreeNode<K, V> rd = node.right;
+			AVLTreeNode<K, V> rd = curr.right;
 			switch (rd.bf) { // 调整各个节点的BF
 			case 1: // 情况1
 				node.bf = -1;
