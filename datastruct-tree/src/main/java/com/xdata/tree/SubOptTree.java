@@ -1,5 +1,7 @@
 package com.xdata.tree;
 
+import java.util.ArrayDeque;
+import java.util.Stack;
 import com.xdata.tree.base.TreeNode;
 
 public class SubOptTree {
@@ -15,18 +17,98 @@ public class SubOptTree {
 		float[] sw = sumWeight(schlen, probability, size);
 	 
 		//4、然后根据书中的算法，递归的构造次优查找树
-		TreeNode root;
+		TreeNode root=new TreeNode();
 		secondOptimal(root, nodes, sw, 0, size - 1);
 	 
 		//5、用前序、中序、层序遍历把次优查找树打印出来看看
-		//PreOrderPrint(root);
-		//InOrderPrint(root);
-		//LevelOrderPrint(root);
+		preOrderPrint(root);
+		inOrderPrint(root);
+		levelOrderPrint(root);
 	}
 	
-	private void secondOptimal(TreeNode rt, int[] nodes, float[] sw, int low, int high)
+	private static void levelOrderPrint(TreeNode rt)
 	{
-		if(null!=nodes || null!=sw || low < 0 || low > high)
+	    System.out.println("LevelOrderPrint: ");
+	    if(null==rt)
+	    {
+	        System.out.println( "@" );
+	        return;
+	    }
+	    ArrayDeque<TreeNode> q=new ArrayDeque<TreeNode>();
+	    q.add(rt);
+	    TreeNode cur = null;
+
+	    while(!q.isEmpty())
+	    {
+	        cur = q.peekFirst();
+	        q.pop();
+	        if(visit(cur))
+	        {
+	            if(null!=cur.lchild)
+	                q.push(cur.lchild);
+	            if(null!=cur.rchild)
+	                q.push(cur.rchild);
+	        }
+	    }
+	    System.out.println( "@" );
+	}
+	private static Boolean visit(TreeNode node)
+	{
+	    if(null!=node){
+	        System.out.println(node.data);
+	        return true;
+	    }
+	    else
+	        return false;
+	}
+	private static void preOrderPrint(TreeNode rt)
+	{
+	    System.out.println("preOrderPrint: ");
+	    if(null==rt)
+	        return;
+	    Stack<TreeNode> s=new Stack<TreeNode>();
+	    s.push(rt);
+	    while(!s.empty())
+	    {
+	    	TreeNode cur = s.pop();
+	        System.out.println(cur.data);
+	        if(null!=cur.rchild)
+	            s.push(cur.rchild);
+	        if(null!=cur.lchild)
+	            s.push(cur.lchild);
+	    }
+	    System.out.println( '@');
+	}
+	
+	private static void inOrderPrint(TreeNode rt)
+	{
+	    System.out.println("InOrderPrint: ");
+	    if(null==rt)
+	        return;
+	    Stack<TreeNode> s = new Stack<TreeNode>();
+	    TreeNode cur = rt;
+
+	    while(!s.empty() || cur != null)
+	    {
+	        while(null!=cur)
+	        {
+	            s.push(cur);
+	            cur = cur.lchild;
+	        }
+	        if(!s.empty())
+	        {
+	            cur = s.pop();
+	            System.out.println(cur.data);
+	            cur = cur.rchild;
+	        }
+	    }
+	    System.out.println("@");
+	}
+
+	
+	private static void secondOptimal(TreeNode rt, int[] nodes, float[] sw, int low, int high)
+	{
+		if(null==nodes || null==sw || low < 0 || low > high)
 			return;
 		int i = low;
 		float min = Math.abs(sw[high] - sw[low]);
@@ -42,13 +124,15 @@ public class SubOptTree {
 		}
 		rt.data = nodes[i];
 		if(i == low)
-			rt->lchild = NULL;
+			rt.lchild = null;
 		else
-			SecondOptimal(rt->lchild, nodes, sw, low, i-1);
+			rt.lchild=new TreeNode();
+			secondOptimal(rt.lchild, nodes, sw, low, i-1);
 		if(i == high)
-			rt->rchild = NULL;
+			rt.rchild = null;
 		else
-			SecondOptimal(rt->rchild, nodes, sw, i+1, high);
+			rt.rchild=new TreeNode();
+			secondOptimal(rt.rchild, nodes, sw, i+1, high);
 	}
 	
 	 
