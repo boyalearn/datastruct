@@ -1,4 +1,4 @@
-package com.xdata.algorithmic;
+package com.xdata.consisithash;
 
 import java.util.SortedMap;
 import java.util.TreeMap;

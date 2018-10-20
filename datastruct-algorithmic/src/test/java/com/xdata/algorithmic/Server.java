@@ -1,5 +1,7 @@
 package com.xdata.algorithmic;
 
+import com.xdata.consisithash.Res;
+
 public class Server implements Res{
 	
 	private String url;

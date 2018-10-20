@@ -1,4 +1,4 @@
-package com.xdata.algorithmic;
+package com.xdata.consisithash;
 
 import com.xdata.tree.AVLTree;
 

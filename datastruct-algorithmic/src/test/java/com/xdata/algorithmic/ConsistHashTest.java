@@ -4,6 +4,9 @@ import java.util.UUID;
 
 import org.junit.Test;
 
+import com.xdata.consisithash.ConsistHash;
+import com.xdata.consisithash.RBConsistHash;
+
 public class ConsistHashTest {
 	@Test
 	public void test(){
