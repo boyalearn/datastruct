@@ -1,6 +1,6 @@
 package com.xdata.algorithmic;
 
-public class Server implements Resource{
+public class Server implements Res{
 	
 	private String url;
 	
@@ -47,16 +47,28 @@ public class Server implements Resource{
 		this.name = name;
 	}
 
-
-
-	@Override
-	public int getHashCode() {
-		return super.hashCode();
-	}
-
 	@Override
 	public String toString() {
 		return "Server [url=" + url + ", ip=" + ip + ", name=" + name + "]";
+	}
+
+	@Override
+	public int hashCode(Object info) {
+		String str=this.toString()+info;
+		final int p = 16777619;
+		int hash = (int)2166136261L;
+		for (int i = 0; i < str.length(); i++)
+		hash = (hash ^ str.charAt(i)) * p;
+		hash += hash << 13;
+		hash ^= hash >> 7;
+		hash += hash << 3;
+		hash ^= hash >> 17;
+		hash += hash << 5;
+		// 如果算出来的值为负数则取其绝对值
+		if (hash < 0)
+		    hash = Math.abs(hash);
+		return hash;
+		
 	}
 	
 	

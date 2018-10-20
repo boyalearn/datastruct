@@ -175,13 +175,13 @@ public class AVLTree<K, V> {
 		return getEntry(key);
 	}
 	
-	public V getSortNext(K key){
+	public V getSortNext(K index){
 		AVLTreeNode<K,V> curr=this.root;
 		int cmp=0;
 		AVLTreeNode<K,V> parent=curr;
 		while(null!=curr){
 			parent=curr;
-			cmp=compare(curr.key,key);
+			cmp=compare(curr.key,index);
 			if(cmp>0){
 				curr=curr.left;
 			}else if(cmp<0){

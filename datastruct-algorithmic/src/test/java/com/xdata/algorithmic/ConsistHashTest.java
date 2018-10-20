@@ -12,20 +12,20 @@ public class ConsistHashTest {
 		Server server3=new Server("3.3.3.3","server3");
 		Server server4=new Server("4.4.4.4","server4");
 		
-		ConsistHash client=new ConsistHash(100);
-		client.addResource(server1);
-		client.addResource(server2);
-		client.addResource(server3);
-		client.addResource(server4);
+		ConsistHash client=new RBConsistHash(100);
+		client.addRes(server1);
+		client.addRes(server2);
+		client.addRes(server3);
+		client.addRes(server4);
 		int countS1=0;
 		int countS2=0;
 		int countS3=0;
 		int countS4=0;
-		for(int i=0;i<10000;i++){
+		for(int i=0;i<10000000;i++){
 			UUID uuid=UUID.randomUUID();
 			int uuidHashCode=uuid.hashCode();
-			Server curr=(Server)client.getResurce(uuidHashCode);
-			System.out.println(curr);
+			Server curr=(Server)client.getRes(uuidHashCode);
+			//System.out.println(curr);
 			if(server1==curr){
 				countS1++;
 			}
@@ -44,6 +44,7 @@ public class ConsistHashTest {
 		System.out.println(countS2);
 		System.out.println(countS3);
 		System.out.println(countS4);
+		System.out.println(countS1+countS2+countS3+countS4);
 	}
 	//@Test
 	public void testInt(){
