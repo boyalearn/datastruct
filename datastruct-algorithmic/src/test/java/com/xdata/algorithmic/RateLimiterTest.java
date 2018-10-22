@@ -7,11 +7,11 @@ import com.xdata.currentlimit.LimiterManager;
 public class RateLimiterTest {
 	@Test
 	public void test(){
-		new LimiterManager().start();
+		/*new LimiterManager().start();*/
 	}
 	
 	public static void main(String[] args){
-		LimiterManager manager= new LimiterManager();
+		/*LimiterManager manager= new LimiterManager();
 		manager.start();
 		long startTime=System.currentTimeMillis();
 		for(int i=1;i<100000000;){
@@ -21,7 +21,7 @@ public class RateLimiterTest {
 			}
 			
 		}
-		System.out.println("spend time:"+(System.currentTimeMillis()-startTime));
+		System.out.println("spend time:"+(System.currentTimeMillis()-startTime));*/
 		
 	}
 }

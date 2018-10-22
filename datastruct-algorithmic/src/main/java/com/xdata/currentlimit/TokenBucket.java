@@ -23,8 +23,7 @@ public class TokenBucket implements RateLimiter{
 	/**
 	 * 平均限流速度
 	 */
-	@SuppressWarnings("unused")
-	private int avgFlowRate;
+	private int flowRate;
 	
 	/**
 	 * 重入锁 考虑业务 代码有递归的情况
@@ -40,15 +39,15 @@ public class TokenBucket implements RateLimiter{
 	/**
 	 * 构造器
 	 * @param maxFlowRate
-	 * @param avgFlowRate
+	 * @param flowRate
 	 */
-	public TokenBucket(int maxFlowRate,int avgFlowRate){
+	public TokenBucket(int maxFlowRate,int flowRate){
 		this.maxFlowRate=maxFlowRate;
-		this.avgFlowRate=avgFlowRate;
+		this.flowRate=flowRate;
 		this.tokenQueue= new ArrayBlockingQueue<Byte>(this.maxFlowRate);
 	}
-	public TokenBucket(int avgFlowRate){
-		this(DEFAULT_BUCKET_SIZE,avgFlowRate);
+	public TokenBucket(int flowRate){
+		this(DEFAULT_BUCKET_SIZE,flowRate);
 	}
 	
 	@Override
@@ -96,6 +95,21 @@ public class TokenBucket implements RateLimiter{
 			System.out.println("bucket size put"+this.tokenQueue.size());
 			lock.unlock();
 		}
+	}
+	@Override
+	public void setFlowRate(int rate) {
+		this.flowRate=rate;
+		
+	}
+	@Override
+	public void setMaxFlowRate(int rate) {
+		this.maxFlowRate=rate;
+		
+	}
+	@Override
+	public int getFlowRate() {
+		// TODO Auto-generated method stub
+		return this.flowRate;
 	}
 
 }
