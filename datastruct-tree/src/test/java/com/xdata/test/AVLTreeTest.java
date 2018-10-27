@@ -2,7 +2,7 @@ package com.xdata.test;
 
 import org.junit.Test;
 
-import com.xdata.tree.AVLTree;
+import com.xdata.tree.avltree.AVLTree;
 
 
 public class AVLTreeTest {
@@ -22,6 +22,6 @@ public class AVLTreeTest {
 		tree.add(8, 8);
 		tree.add(9, 9);
 		tree.add(10, 10);*/
-		System.out.println(tree.getSortNext(100));
+		System.out.println(tree.getNext(100));
 	}
 }

@@ -1,11 +1,129 @@
-package com.xdata.tree;
+package com.xdata.tree.avltree;
 
-import com.xdata.tree.base.AVLTreeNode;
+/**
+ * 
+ * @describe 平衡树实现
+ * 
+ * @author zouhuixing
+ *
+ * @param <K>
+ * @param <V>
+ */
 
 public class AVLTree<K, V> {
 
 	private AVLTreeNode<K, V> root;
+	
+	/**
+	 * @function 通过key获取节点数据
+	 * 顺序遍历节点就可以找到数据
+	 * @param key
+	 * @return
+	 */
+	public AVLTreeNode<K, V> get(K key) {
+		return getEntry(key);
+	}
+	
+	/**
+	 * @function 顺序获取下一个节点
+	 * 通过参数key找到一个大于小于该节点的数据。
+	 * @param index
+	 * @return
+	 */
+	public V getNext(K index){
+		AVLTreeNode<K,V> curr=this.root;
+		int cmp=0;
+		AVLTreeNode<K,V> parent=curr;
+		while(null!=curr){
+			parent=curr;
+			cmp=compare(curr.key,index);
+			if(cmp>0){
+				curr=curr.left;
+			}else if(cmp<0){
+				curr=curr.right;
+			}else{
+				return curr.value;
+			}
+		}
+		if(cmp>0){
+			return parent.value;
+		}else{
+			while(null!=parent.parent){
+				if(parent.parent.left==parent){
+					return parent.parent.value;
+				}else{
+					parent=parent.parent;
+				}
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * 删除一个节点
+	 * @param key
+	 * @return
+	 */
+	public Boolean remove(K key) {
+		AVLTreeNode<K, V> e = getEntry(key);
+		if (e != null) {
+			deleteEntry(e);
+			return true;
+		}
+		return false;
 
+	}
+	
+	/**
+	 * 添加一个节点
+	 * 
+	 * 算法思路
+	 * 1.从跟节点开始找到插入位置。
+	 * 2.根据从插入位置开始向上分析不平衡点。
+	 *   然后通过左旋右旋将树调节平衡
+	 *   
+	 * 当数不满足平衡树条件的时候树有如下几种情况
+	 * 
+	 * 情况1
+	 *                  4
+	 *                 / \
+	 *                3   5
+	 *               / 
+	 *              2
+	 *             /
+	 *            1  
+	 *            
+	 * 情况2           
+	 *            
+	 *                  4
+	 *                 / \
+	 *                3   5
+	 *                     \
+	 *                      6
+	 *                       \
+	 *                        7
+	 * 情况3
+	 *                  4
+	 *                 / \
+	 *                3   5
+	 *               /
+	 *              1
+	 *               \
+	 *                2
+	 *                
+	 * 情况4
+	 *                  4
+	 *                 / \
+	 *                3   5
+	 *                     \
+	 *                      7
+	 *                     /
+	 *                    6
+	 *                     
+	 * @param key
+	 * @param value
+	 * @return
+	 */
 	public boolean add(K key, V value) {
 		if (null == this.root) {
 			this.root = new AVLTreeNode<K, V>(key, value);
@@ -171,38 +289,7 @@ public class AVLTree<K, V> {
 		}
 	}
 
-	public AVLTreeNode<K, V> get(K key) {
-		return getEntry(key);
-	}
 	
-	public V getSortNext(K index){
-		AVLTreeNode<K,V> curr=this.root;
-		int cmp=0;
-		AVLTreeNode<K,V> parent=curr;
-		while(null!=curr){
-			parent=curr;
-			cmp=compare(curr.key,index);
-			if(cmp>0){
-				curr=curr.left;
-			}else if(cmp<0){
-				curr=curr.right;
-			}else{
-				return curr.value;
-			}
-		}
-		if(cmp>0){
-			return parent.value;
-		}else{
-			while(null!=parent.parent){
-				if(parent.parent.left==parent){
-					return parent.parent.value;
-				}else{
-					parent=parent.parent;
-				}
-			}
-		}
-		return null;
-	}
 
 	private AVLTreeNode<K, V> getEntry(K key) {
 		AVLTreeNode<K, V> tmp = root;
@@ -220,15 +307,6 @@ public class AVLTree<K, V> {
 		return null;
 	}
 
-	public Boolean remove(K key) {
-		AVLTreeNode<K, V> e = getEntry(key);
-		if (e != null) {
-			deleteEntry(e);
-			return true;
-		}
-		return false;
-
-	}
 
 	private void deleteEntry(AVLTreeNode<K, V> node){
 		//如果node左右子树都不为空，找到其直接后继，替换node，之后node指向s，删除node其实是删除s

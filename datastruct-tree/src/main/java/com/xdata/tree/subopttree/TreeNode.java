@@ -1,4 +1,4 @@
-package com.xdata.tree.base;
+package com.xdata.tree.subopttree;
 
 public class TreeNode {
 	public int data;

@@ -1,6 +1,6 @@
 package com.xdata.consisithash;
 
-import com.xdata.tree.AVLTree;
+import com.xdata.tree.avltree.AVLTree;
 
 public class AVLConsistHash implements ConsistHash{
 	
@@ -41,9 +41,9 @@ public class AVLConsistHash implements ConsistHash{
 	}
 	@Override
 	public Res getRes(Object index) {
-		Res curr=(Res)source.getSortNext((int)index);
+		Res curr=(Res)source.getNext((int)index);
 		if(null==curr){
-			return (Res)source.getSortNext(0);
+			return (Res)source.getNext(0);
 		}
 		return curr;
 	}

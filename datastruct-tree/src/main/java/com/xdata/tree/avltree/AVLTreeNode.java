@@ -1,4 +1,4 @@
-package com.xdata.tree.base;
+package com.xdata.tree.avltree;
 
 public class AVLTreeNode<K,V> {
 	public int bf=0;

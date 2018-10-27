@@ -1,8 +1,7 @@
-package com.xdata.tree;
+package com.xdata.tree.subopttree;
 
 import java.util.ArrayDeque;
 import java.util.Stack;
-import com.xdata.tree.base.TreeNode;
 
 public class SubOptTree {
 	public static void main(String[] args) {
