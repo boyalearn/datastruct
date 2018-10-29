@@ -6,11 +6,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
+	    <module>datastruct-linkedlist</module>
+	    <module>datastruct-queue</module>
+	    <module>datastruct-stack</module>
 		<module>datastruct-tree</module>
+		<module>datastruct-graph</module>
 		<module>datastruct-algorithmic</module>
-		<module>datastruct-stack</module>
-		<module>datastruct-queue</module>
-		<module>datastruct-linkedlist</module>
 	</modules>
 
 	<properties>
