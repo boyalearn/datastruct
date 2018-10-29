@@ -51,6 +51,12 @@ public class RBTree<K extends Comparable<K>,V> {
 		return null==this.root;
 	}
 	
+	/**
+	 * 删除的核心算法 是将要删除的节点构造成3-节点或者4-节点进行删除
+	 * @param parent
+	 * @param key
+	 * @return
+	 */
 	private Node<K,V> delete(Node<K,V> parent,K key){
 		if(key.compareTo(parent.key)<0){
 			if(!isRed(parent.left)&&!isRed(parent.left.left)){
@@ -147,7 +153,13 @@ public class RBTree<K extends Comparable<K>,V> {
 		}
 		return node;
 	}
-	
+	/**
+	 * 插入算法的核心是参照2-3树对节点进行调整
+	 * 
+	 * @param parent
+	 * @param node
+	 * @return
+	 */
 	private Node<K,V> put(Node<K,V> parent,Node<K,V> node){
 		//如果找到空节点则赋值
 		if(null==parent){

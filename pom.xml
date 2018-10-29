@@ -9,6 +9,7 @@
 		<module>datastruct-tree</module>
 		<module>datastruct-algorithmic</module>
 		<module>datastruct-stack</module>
+		<module>datastruct-queue</module>
 	</modules>
 
 	<properties>
