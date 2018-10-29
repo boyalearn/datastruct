@@ -10,6 +10,7 @@
 		<module>datastruct-algorithmic</module>
 		<module>datastruct-stack</module>
 		<module>datastruct-queue</module>
+		<module>datastruct-linkedlist</module>
 	</modules>
 
 	<properties>
