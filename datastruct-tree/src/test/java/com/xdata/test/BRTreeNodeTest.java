@@ -14,6 +14,10 @@ public class BRTreeNodeTest {
 		tree.put(4, 4);
 		tree.put(5, 5);
 		tree.put(6, 6);
+		tree.remove(6);
+		tree.remove(5);
+		tree.remove(4);
+		tree.remove(3);
 		System.out.println(tree);
 	}
 }

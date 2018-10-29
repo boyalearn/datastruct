@@ -104,15 +104,15 @@ public class RBTree<K extends Comparable<K>,V> {
 	}
 	
 	private Node<K,V> moveRedRight(Node<K,V> node){
-		flipColors(node);
-		if(!isRed(node.left.left)){
+		flipColorsForDel(node);
+		if(null==node.left||!isRed(node.left.left)){
 			node=rotateRight(node);
 		}
 		return node;
 	}
 	
 	private Node<K,V> moveRedLeft(Node<K,V> node){
-		flipColors(node);
+		flipColorsForDel(node);
 		if(isRed(node.right.left)){
 			node.right=rotateRight(node.right);
 			node=rotateLeft(node);
@@ -143,7 +143,7 @@ public class RBTree<K extends Comparable<K>,V> {
 		}
 
 		if(isRed(node.left)&&isRed(node.right)){
-			flipColors(node);
+			flipColorsForDel(node);
 		}
 		return node;
 	}
@@ -223,7 +223,13 @@ public class RBTree<K extends Comparable<K>,V> {
 	}
 	
 	
-	
+	private void flipColorsForDel(Node<K,V> node){
+		if(null!=node.left)
+		node.left.color=Node.RED;
+		if(null!=node.right)
+		node.right.color=Node.RED;
+		node.color=Node.BLACK;
+	}
 	
 	
 	private boolean isRed(Node<K,V> node){
