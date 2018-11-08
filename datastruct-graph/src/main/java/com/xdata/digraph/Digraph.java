@@ -1,13 +1,16 @@
-package com.xdata.graph;
+package com.xdata.digraph;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Graph {
+import com.xdata.graph.Graph;
+
+
+public class Digraph {
 	
-	private int E;
+    private int E;
 	
 	private final int V;
 	
@@ -16,7 +19,7 @@ public class Graph {
 	
 	
 	@SuppressWarnings("unchecked")
-	public Graph(int V){
+	public Digraph(int V){
 		this.V=V;this.E=0;
 		adj=(Bag<Integer>[])new Bag[V];
 		for(int v=0;v<V;v++){
@@ -24,7 +27,7 @@ public class Graph {
 		}
 	}
 	
-	public Graph(){
+	public Digraph(){
 		this(In.readInt());
 		int E=In.readInt();
 		for(int i=0;i<E;i++){
@@ -35,9 +38,20 @@ public class Graph {
 		}
 	}
 	
+	public Digraph reverse(){
+		Digraph R=new Digraph(V);
+		for(int v=0;v<V;v++){
+			Digraph.Bag<Integer> data=adj(v);
+			while(null!=data.getData()){
+				R.addEdge(data.getData(),v);
+				data=data.getNext();
+			}
+		}
+		return R;
+	}
+	
 	public void addEdge(int v,int w){
 		adj[v].add(w);
-		adj[w].add(v);
 		E++;
 	}
 	
@@ -130,6 +144,5 @@ public class Graph {
 			}
 		}
 	}
-	
 
 }

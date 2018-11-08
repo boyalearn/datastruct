@@ -1,5 +1,11 @@
 package com.xdata.graph;
 
-public class GraphTest {
+import org.junit.Test;
 
+public class GraphTest {
+	@Test
+	public void testOne(){
+		Graph grap=new Graph();
+		System.out.println(grap);
+	}
 }
