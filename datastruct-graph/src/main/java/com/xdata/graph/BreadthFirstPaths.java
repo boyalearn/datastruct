@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class BreadthFirstPaths {
 	private boolean[] marked;
 	private int[] edgeTo;
-	private int s;
+	public int s;
 	
 	public BreadthFirstPaths(Graph G,int s){
 		this.marked=new boolean[G.V()];
@@ -22,13 +22,12 @@ public class BreadthFirstPaths {
 		while(!queue.isEmpty()){
 			int v=queue.poll();
 			Graph.Bag<Integer> adj=G.adj(v);
-			while(null!=adj.getData()){
-				if(!marked[adj.getData()]){
-					edgeTo[adj.getData()]=v;
-					marked[adj.getData()]=true;
-					queue.add(adj.getData());
+			for(Graph.Bag<Integer> data:adj){
+				if(!marked[data.getData()]){
+					edgeTo[data.getData()]=v;
+					marked[data.getData()]=true;
+					queue.add(data.getData());
 				}
-				adj=adj.getNext();
 			}
 		}
 	}

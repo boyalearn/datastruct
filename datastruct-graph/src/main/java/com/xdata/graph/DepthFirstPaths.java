@@ -14,15 +14,14 @@ public class DepthFirstPaths {
 		dfs(G,s);
 	}
 	
-	private void dfs(Graph G,int v){
+	public void dfs(Graph G,int v){
 		marked[v]=true;
 		Graph.Bag<Integer> adj=G.adj(v);
-		while(null!=adj.getData()){
-			if(!marked[adj.getData()]){
-				edgeTo[adj.getData()]=v;
-				dfs(G,adj.getData());
+		for(Graph.Bag<Integer> data:adj){
+			if(!marked[data.getData()]){
+				edgeTo[data.getData()]=v;
+				dfs(G,data.getData());
 			}
-			adj=adj.getNext();
 		}
 	}
 	public boolean hasPathTo(int v){

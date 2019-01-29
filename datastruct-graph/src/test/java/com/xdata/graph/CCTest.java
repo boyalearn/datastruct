@@ -1,5 +1,8 @@
 package com.xdata.graph;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 
 public class CCTest {
@@ -22,12 +25,12 @@ public class CCTest {
 		}
 		for(int i=0;i<M;i++){
 			Graph.Bag<Integer> adj=components[i];
-			while(null!=adj.getData()){
-				System.out.print(adj.getData()+" ");
-				adj=adj.getNext();
+			for(Graph.Bag<Integer> data:adj){
+				System.out.print(data.getData()+" ");
 			}
 			System.out.println();
 		}
+		Map<String,Object> map=new HashMap<String,Object>();
 	}
 
 }

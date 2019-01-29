@@ -15,11 +15,10 @@ public class DepthFirstSearch {
 		marked[v]=true;
 		count++;
 		Graph.Bag<Integer> adj=G.adj(v);
-		while(null!=adj.getData()){
-			if(!marked[adj.getData()]){
-				dfs(G,adj.getData());
+		for(Graph.Bag<Integer> data:adj){
+			if(!marked[data.getData()]){
+				dfs(G,data.getData());
 			}
-			adj=adj.getNext();
 		}
 	}
 	

@@ -4,17 +4,21 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
 
 public class Graph {
 	
+	//边数
 	private int E;
 	
+	//顶点数
 	private final int V;
 	
+	//临接链表
 	private Bag<Integer>[] adj;
 	
 	
-	
+	//构造函数
 	@SuppressWarnings("unchecked")
 	public Graph(int V){
 		this.V=V;this.E=0;
@@ -53,31 +57,29 @@ public class Graph {
 		return adj[v];
 	}
 	
-	public static class Bag<T>{
+	public static class Bag<T> implements Iterable<Bag<T>>{
 		
 		private T data;
+		
 		private Bag<T> next;
+		
+		private Bag<T> curr;
 		
 		public Bag(T data){
 			this.data=data;
-			this.next=new Bag<T>();
 		}
 		
 		public Bag() {
 		}
 
 		public void add(T node){
-			Bag<T> curr=this;
-			if(null==curr.data){
-				curr.data=node;
-				curr.next=new Bag<T>();
-				return;
-			}
-			while(null!=curr.data){
+			if(null==curr){
+				this.data=node;
+				curr=this;
+			}else{
+				curr.next=new Bag<T>(node);
 				curr=curr.next;
 			}
-			curr.data=node;
-			curr.next=new Bag<T>();
 		}
 
 		public T getData() {
@@ -95,7 +97,51 @@ public class Graph {
 		public void setNext(Bag<T> next) {
 			this.next = next;
 		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(data);
+		}
+
+		@Override
+		public Iterator iterator() {
+			// TODO Auto-generated method stub
+			return new BagIterable(this);
+		}
+		public class BagIterable implements Iterator<Bag>{
+			
+			private Bag<T> curr;
+			
+			public BagIterable(Bag<T> bag){
+				curr=bag;
+			}
+
+			@Override
+			public boolean hasNext() {
+				return null!=curr;
+			}
+
+			@Override
+			public Bag<T> next() {
+				Bag<T> data=curr;
+				curr=curr.next;
+				return data;
+			}
+			
+		}
+
 		
+	}
+	
+	public static void main(String[] args){
+		Bag<String> bag=new Bag<String>();
+		bag.add("3");
+		bag.add("4");
+		bag.add("5");
+		bag.add("6");
+		for(Bag<String> b:bag){
+			System.out.println(b);
+		}
 	}
 	
 	
