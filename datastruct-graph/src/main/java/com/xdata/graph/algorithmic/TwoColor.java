@@ -1,4 +1,7 @@
-package com.xdata.graph;
+package com.xdata.graph.algorithmic;
+
+import com.xdata.basestruct.Bag;
+import com.xdata.graph.struct.Graph;
 
 public class TwoColor {
 	private boolean[] marked;
@@ -16,7 +19,7 @@ public class TwoColor {
 	}
 	private void dfs(Graph G,int v){
 		marked[v]=true;
-		Graph.Bag<Integer> adj=G.adj(v);
+		Bag<Integer> adj=G.adj(v);
 		while(null!=adj.getData()){
 			if(!marked[adj.getData()]){
 				color[adj.getData()]=!color[v];

@@ -1,4 +1,7 @@
-package com.xdata.graph;
+package com.xdata.graph.algorithmic;
+
+import com.xdata.basestruct.Bag;
+import com.xdata.graph.struct.Graph;
 
 public class Cycle {
 	private boolean[] marked;
@@ -15,14 +18,13 @@ public class Cycle {
 	
 	private void dfs(Graph G, int v,int u){
 		marked[v]=true;
-		Graph.Bag<Integer> adj=G.adj(v);
-		while(null!=adj.getData()){
-			if(!marked[adj.getData()]){
-				dfs(G,adj.getData(),u);
-			}else if(adj.getData()!=u){
+		Bag<Integer> adj=G.adj(v);
+		for(Bag<Integer> data:adj){
+			if(!marked[data.getData()]){
+				dfs(G,data.getData(),u);
+			}else if(data.getData()!=u){
 				hasCycle=true;
 			}
-			adj=adj.getNext();
 		}
 	}
 	

@@ -5,6 +5,10 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.xdata.basestruct.Bag;
+import com.xdata.graph.algorithmic.CC;
+import com.xdata.graph.struct.Graph;
+
 public class CCTest {
 	
 	@SuppressWarnings("unchecked")
@@ -16,16 +20,16 @@ public class CCTest {
 		int M=cc.count();
 		System.out.println(M+" components");
 		
-		Graph.Bag<Integer>[] components=(Graph.Bag<Integer>[])new Graph.Bag[M];
+		Bag<Integer>[] components=(Bag<Integer>[])new Bag[M];
 		for(int i=0;i<M;i++){
-			components[i]=new Graph.Bag<Integer>();
+			components[i]=new Bag<Integer>();
 		}
 		for(int v=0;v<G.V();v++){
 			components[cc.id(v)].add(v);
 		}
 		for(int i=0;i<M;i++){
-			Graph.Bag<Integer> adj=components[i];
-			for(Graph.Bag<Integer> data:adj){
+			Bag<Integer> adj=components[i];
+			for(Bag<Integer> data:adj){
 				System.out.print(data.getData()+" ");
 			}
 			System.out.println();

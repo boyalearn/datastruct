@@ -50,11 +50,11 @@ public class Bag<T> implements Iterable<Bag<T>>{
 	}
 
 	@Override
-	public Iterator iterator() {
+	public Iterator<Bag<T>> iterator() {
 		// TODO Auto-generated method stub
 		return new BagIterable(this);
 	}
-	public class BagIterable implements Iterator<Bag>{
+	public class BagIterable implements Iterator<Bag<T>>{
 		
 		private Bag<T> curr;
 		

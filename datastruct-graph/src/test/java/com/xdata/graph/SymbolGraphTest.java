@@ -2,12 +2,17 @@ package com.xdata.graph;
 
 import org.junit.Test;
 
+import com.xdata.basestruct.Bag;
+import com.xdata.graph.algorithmic.SearchPathBreadthFirst;
+import com.xdata.graph.struct.Graph;
+import com.xdata.symbolgraph.struct.SymbolGraph;
+
 public class SymbolGraphTest {
 	//@Test
 	public void testOne(){
 		SymbolGraph sg=new SymbolGraph();
 		Graph G=sg.G();
-		Graph.Bag<Integer> adj=G.adj(sg.index("LAS"));
+		Bag<Integer> adj=G.adj(sg.index("LAS"));
 		while(null!=adj.getData()){
 			System.out.println("  "+sg.name(adj.getData()));
 			adj=adj.getNext();
@@ -23,7 +28,7 @@ public class SymbolGraphTest {
 			return ;
 		}
 		int s=sg.index(source);
-		BreadthFirstPaths bfs=new BreadthFirstPaths(G,s);
+		SearchPathBreadthFirst bfs=new SearchPathBreadthFirst(G,s);
 		int t=sg.index("MCO");
 		if(bfs.hasPathTo(t)){
 			for(int v:bfs.pathTo(t)){

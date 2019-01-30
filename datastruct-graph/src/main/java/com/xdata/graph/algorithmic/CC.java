@@ -1,4 +1,8 @@
-package com.xdata.graph;
+package com.xdata.graph.algorithmic;
+
+import com.xdata.basestruct.Bag;
+import com.xdata.graph.struct.Graph;
+
 /**
  * 
  * @author zouhuixing
@@ -24,8 +28,8 @@ public class CC {
 	private void dfs(Graph G,int v){
 		marked[v]=true;
 		id[v]=count;
-		Graph.Bag<Integer> adj=G.adj(v);
-		for(Graph.Bag<Integer> data:adj){
+		Bag<Integer> adj=G.adj(v);
+		for(Bag<Integer> data:adj){
 			if(!marked[data.getData()]){
 				dfs(G,data.getData());
 			}

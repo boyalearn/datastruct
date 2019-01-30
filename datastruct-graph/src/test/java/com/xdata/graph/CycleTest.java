@@ -2,6 +2,9 @@ package com.xdata.graph;
 
 import org.junit.Test;
 
+import com.xdata.graph.algorithmic.Cycle;
+import com.xdata.graph.struct.Graph;
+
 public class CycleTest {
 	@Test
 	public void testOne(){

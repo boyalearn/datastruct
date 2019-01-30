@@ -1,4 +1,6 @@
-package com.xdata.graph;
+package com.xdata.graph.algorithmic;
+
+import com.xdata.graph.struct.Graph;
 
 /**
  * ´ıÊµÏÖ

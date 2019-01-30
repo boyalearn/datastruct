@@ -1,4 +1,4 @@
-package com.xdata.graph.basestruct;
+package com.xdata.graph.struct;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,8 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import com.xdata.basestruct.Bag;
+import com.xdata.graph.IGraph;
 
-public class Graph {
+public class Graph implements IGraph{
 	
 	//±ßÊý
 	private int E;
@@ -58,17 +59,6 @@ public class Graph {
 		return adj[v];
 	}
 	
-	
-	public static void main(String[] args){
-		Bag<String> bag=new Bag<String>();
-		bag.add("3");
-		bag.add("4");
-		bag.add("5");
-		bag.add("6");
-		for(Bag<String> b:bag){
-			System.out.println(b);
-		}
-	}
 	
 	
 	private static class In{

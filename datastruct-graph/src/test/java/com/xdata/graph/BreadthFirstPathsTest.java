@@ -4,11 +4,14 @@ import java.util.Stack;
 
 import org.junit.Test;
 
+import com.xdata.graph.algorithmic.SearchPathBreadthFirst;
+import com.xdata.graph.struct.Graph;
+
 public class BreadthFirstPathsTest {
 	@Test
 	public void testOne(){
 		Graph G=new Graph();
-		BreadthFirstPaths path=new BreadthFirstPaths(G,0);
+		SearchPathBreadthFirst path=new SearchPathBreadthFirst(G,0);
 		for(int to=0;to<G.V();to++){
 			Stack<Integer> stack=(Stack<Integer>)path.pathTo(to);
 			System.out.println(path.s+"to"+to);
