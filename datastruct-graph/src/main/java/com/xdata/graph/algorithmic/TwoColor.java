@@ -20,14 +20,13 @@ public class TwoColor {
 	private void dfs(Graph G,int v){
 		marked[v]=true;
 		Bag<Integer> adj=G.adj(v);
-		while(null!=adj.getData()){
-			if(!marked[adj.getData()]){
-				color[adj.getData()]=!color[v];
-				dfs(G,adj.getData());
-			}else if(color[adj.getData()]==color[v]){
+		for(Bag<Integer> data:adj){
+			if(!marked[data.getData()]){
+				color[data.getData()]=!color[v];
+				dfs(G,data.getData());
+			}else if(color[data.getData()]==color[v]){
 				isTwoColorable=false;
 			}
-			adj=adj.getNext();
 		}
 	}
 	public boolean isBipartite(){
