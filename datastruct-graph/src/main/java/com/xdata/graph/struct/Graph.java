@@ -67,7 +67,7 @@ public class Graph implements IGraph{
 		
 		static{
 			try {
-				String path=In.class.getResource("").getPath()+"..//..//..//t01.txt";
+				String path=In.class.getResource("").getPath()+"..//..//..//..//t01.txt";
 				FileReader fr = new FileReader(path);
 				bufr = new BufferedReader(fr);
 			} catch (FileNotFoundException e) {

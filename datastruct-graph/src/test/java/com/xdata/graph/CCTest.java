@@ -1,12 +1,8 @@
 package com.xdata.graph;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Test;
-
 import com.xdata.basestruct.Bag;
-import com.xdata.graph.algorithmic.CC;
+import com.xdata.graph.algorithmic.ConnectComCalculate;
 import com.xdata.graph.struct.Graph;
 
 public class CCTest {
@@ -15,7 +11,7 @@ public class CCTest {
 	@Test
 	public void testOne(){
 		Graph G=new Graph();
-		CC cc=new CC(G);
+		ConnectComCalculate cc=new ConnectComCalculate(G);
 		
 		int M=cc.count();
 		System.out.println(M+" components");
@@ -34,7 +30,6 @@ public class CCTest {
 			}
 			System.out.println();
 		}
-		Map<String,Object> map=new HashMap<String,Object>();
 	}
 
 }
