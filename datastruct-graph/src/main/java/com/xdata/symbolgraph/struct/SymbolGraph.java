@@ -10,8 +10,13 @@ import java.util.Map;
 import com.xdata.graph.struct.Graph;
 import com.xdata.utils.StringUtil;
 
-
-
+/**
+ * 
+ * @author zouhuixing
+ * 
+ * 符号图在普通图的基础上加一个符号与key的映射
+ *
+ */
 public class SymbolGraph {
 	private Map<String,Integer> st;
 	private String[] keys;
@@ -22,7 +27,7 @@ public class SymbolGraph {
 		String lineOne="";
 		In inone=new In();
 		while(!StringUtil.isEmpty(lineOne=inone.readStr())){
-			String[] a=lineOne.split("[ ]");
+			String[] a=lineOne.trim().split("\\s{1,}");
 			for(int i=0;i<a.length;i++){
 				if(!st.containsKey(a[i])){
 					st.put(a[i], st.size());
@@ -42,11 +47,10 @@ public class SymbolGraph {
 		In intwo=new In();
 		String lineTwo="";
 		while(!StringUtil.isEmpty(lineTwo=intwo.readStr())){
-			String[] a=lineTwo.split("[ ]");
+			String[] a=lineTwo.split("\\s{1,}");
 			int v=st.get(a[0]);
-			for(int i=0;i<a.length;i++){
-				G.addEdge(v, st.get(a[i]));
-			}
+			int w=st.get(a[1]);
+			G.addEdge(v, w);
 		}
 	}
 	
@@ -74,7 +78,7 @@ public class SymbolGraph {
 		
 		public In(){
 			try {
-				String path=In.class.getResource("").getPath()+"..//..//..//t02.txt";
+				String path=In.class.getResource("").getPath()+"..//..//..//..//t02.txt";
 				fr = new FileReader(path);
 				bufr = new BufferedReader(fr);
 			} catch (FileNotFoundException e) {

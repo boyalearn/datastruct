@@ -1,38 +1,40 @@
-package com.xdata.graph;
+package com.xdata.symbolgraph.algorithmic;
 
 import java.util.Stack;
-
-import org.junit.Test;
 
 import com.xdata.basestruct.Bag;
 import com.xdata.graph.algorithmic.SearchPathBreadthFirst;
 import com.xdata.graph.struct.Graph;
 import com.xdata.symbolgraph.struct.SymbolGraph;
 
-public class SymbolGraphTest {
-	@Test
-	public void testOne(){
-		SymbolGraph sg=new SymbolGraph();
+/**
+ * 
+ * @author zouhuixing
+ * 
+ * ·ûºÅÍ¼Ëã·¨
+ *
+ */
+public class SearchSymbolGraph {
+	
+	public void getAdjacent(SymbolGraph sg,String nodeName) {
 		Graph G=sg.G();
-		Bag<Integer> adj=G.adj(sg.index("LAS"));
+		Bag<Integer> adj=G.adj(sg.index(nodeName));
 		for(Bag<Integer> data:adj){
-			System.out.println("  "+sg.name(data.getData()));
+			System.out.println(nodeName+"->"+sg.name(data.getData()));
 		}
 	}
-	@Test
-	public void testTwo(){
-		SymbolGraph sg=new SymbolGraph();
+	
+	public void findPath(SymbolGraph sg,String source,String end) {
 		Graph G=sg.G();
-		String source="MCO";
 		if(!sg.contains(source)){
 			System.out.println(source+" not in database.");
 			return ;
 		}
 		int s=sg.index(source);
 		SearchPathBreadthFirst bfs=new SearchPathBreadthFirst(G,s);
-		int t=sg.index("LAS");
-		if(bfs.hasPathTo(t)){
-			Stack<Integer> stack=(Stack<Integer>)bfs.pathTo(t); 
+		int e=sg.index(end);
+		if(bfs.hasPathTo(e)){
+			Stack<Integer> stack=(Stack<Integer>)bfs.pathTo(e); 
 			int length=stack.size();
 			for(int i=0;i<length;i++){
 				System.out.print("->"+sg.name(stack.pop()));

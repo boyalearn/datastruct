@@ -5,7 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.xdata.basestruct.Bag;
 
+/**
+ * 有向图。在无向图的基础上取消反向边。
+ * @author zouhuixing
+ *
+ */
 public class Digraph {
 	
     private int E;
@@ -32,17 +38,16 @@ public class Digraph {
 			String[] line=In.readStr().split("[ ]");
 			int v=Integer.valueOf(line[0]);
 			int w=Integer.valueOf(line[1]);
-			addEdge( w , v );
+			addEdge( v , w );
 		}
 	}
 	
 	public Digraph reverse(){
 		Digraph R=new Digraph(V);
 		for(int v=0;v<V;v++){
-			Digraph.Bag<Integer> data=adj(v);
-			while(null!=data.getData()){
-				R.addEdge(data.getData(),v);
-				data=data.getNext();
+			Bag<Integer> data=adj(v);
+			for(Bag<Integer> d:data){
+				R.addEdge(d.getData(),v);
 			}
 		}
 		return R;
@@ -65,50 +70,6 @@ public class Digraph {
 		return adj[v];
 	}
 	
-	public static class Bag<T>{
-		
-		private T data;
-		private Bag<T> next;
-		
-		public Bag(T data){
-			this.data=data;
-			this.next=new Bag<T>();
-		}
-		
-		public Bag() {
-		}
-
-		public void add(T node){
-			Bag<T> curr=this;
-			if(null==curr.data){
-				curr.data=node;
-				curr.next=new Bag<T>();
-				return;
-			}
-			while(null!=curr.data){
-				curr=curr.next;
-			}
-			curr.data=node;
-			curr.next=new Bag<T>();
-		}
-
-		public T getData() {
-			return data;
-		}
-
-		public void setData(T data) {
-			this.data = data;
-		}
-
-		public Bag<T> getNext() {
-			return next;
-		}
-
-		public void setNext(Bag<T> next) {
-			this.next = next;
-		}
-		
-	}
 	
 	
 	private static class In{
@@ -117,7 +78,7 @@ public class Digraph {
 		
 		static{
 			try {
-				String path=In.class.getResource("").getPath()+"..//..//..//t01.txt";
+				String path=In.class.getResource("").getPath()+"..//..//..//..//t03.txt";
 				FileReader fr = new FileReader(path);
 				bufr = new BufferedReader(fr);
 			} catch (FileNotFoundException e) {

@@ -3,6 +3,14 @@ package com.xdata.graph.algorithmic;
 import com.xdata.basestruct.Bag;
 import com.xdata.graph.struct.Graph;
 
+/**
+ * 
+ * @author zouhuixing
+ * @desc 采用深度优先的遍历方法。以一个订点出发。用boolean数组标记颜色。
+ * 每当遇到一个非标记的相邻节点标记为对立的颜色（true/false）标记
+ * 每当遇到一个标记的节点判断颜色是否相等。如果相等就是非双色图。
+ *
+ */
 public class TwoColor {
 	private boolean[] marked;
 	private boolean[] color;

@@ -64,7 +64,7 @@ public class Bag<T> implements Iterable<Bag<T>>{
 
 		@Override
 		public boolean hasNext() {
-			return null!=curr;
+			return null!=curr&&null!=curr.data;
 		}
 
 		@Override
