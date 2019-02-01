@@ -16,11 +16,11 @@ import com.xdata.edgeweightedgraph.struct.EdgeWeightedGraph;
  */
 public class LazyPrimMST implements MST{
 	
-	private boolean[] marked;
+	private boolean[] marked;   //最小生成树的顶点
 	
-	private Queue<Edge> mst;
+	private Queue<Edge> mst;    //最小生成树的边
 	
-	private MinPQ<Edge> pq;
+	private MinPQ<Edge> pq;     //横切边（无效的边）
 	
 	public LazyPrimMST(EdgeWeightedGraph G) {
 		pq = new MinPQ<Edge>();
@@ -30,6 +30,7 @@ public class LazyPrimMST implements MST{
 		while(!pq.isEmpty()) {
 			Edge e=pq.delMin();
 			int v=e.either(),w=e.other(v);
+			if(marked[v]&&marked[w]) continue;
 			mst.add(e);
 			if(!marked[v]) {
 				visit(G,v);
@@ -52,6 +53,10 @@ public class LazyPrimMST implements MST{
 	public Queue<Edge> edges() {
 		return mst;
 	}
+	
+	public Iterable<Edge> minPQ(){
+		return pq;
+	}
 
 	@Override
 	public double weight() {
@@ -65,6 +70,12 @@ public class LazyPrimMST implements MST{
 	public static void main(String[] args) {
 		EdgeWeightedGraph G=new EdgeWeightedGraph();
 		LazyPrimMST lazyPrimMST=new LazyPrimMST(G);
+		Queue<Edge> edges=lazyPrimMST.edges();
+		System.out.println("Path  :");
+		for(Edge edge:edges) {
+			System.out.println("  "+edge.toString());
+		}
+		System.out.println("Weight:");
 		System.out.println(lazyPrimMST.weight());
 	}
 
