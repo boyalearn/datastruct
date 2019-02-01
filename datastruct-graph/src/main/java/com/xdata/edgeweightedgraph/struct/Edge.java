@@ -1,6 +1,5 @@
 package com.xdata.edgeweightedgraph.struct;
 
-import javax.management.RuntimeErrorException;
 
 public class Edge implements Comparable<Edge>{
 	
@@ -38,6 +37,12 @@ public class Edge implements Comparable<Edge>{
 			return 0;
 		else return 1;
 	}
+
+	@Override
+	public String toString() {
+		return v + "->" + w + " " + weight;
+	}
+	
 	
 	
 }
