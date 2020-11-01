@@ -7,9 +7,23 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * 广度优先的搜索方式
+ */
 public class SearchPathBreadthFirst {
+    /**
+     * 是否被标记
+     */
     private boolean[] marked;
+
+    /**
+     * 前驱数组
+     */
     private int[] edgeTo;
+
+    /**
+     * 起点
+     */
     public int s;
 
     public SearchPathBreadthFirst(Graph G, int s) {

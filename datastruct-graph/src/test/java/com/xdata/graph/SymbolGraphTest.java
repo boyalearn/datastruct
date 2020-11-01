@@ -14,8 +14,8 @@ public class SymbolGraphTest {
 		SymbolGraph sg=new SymbolGraph();
 		Graph G=sg.G();
 		Bag<Integer> adj=G.adj(sg.index("LAS"));
-		for(Bag<Integer> data:adj){
-			System.out.println("  "+sg.name(data.getData()));
+		for(Integer data:adj){
+			System.out.println("  "+sg.name(data));
 		}
 	}
 	@Test

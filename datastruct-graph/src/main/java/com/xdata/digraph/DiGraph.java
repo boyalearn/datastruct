@@ -86,11 +86,10 @@ public class DiGraph {
 
         static {
             try {
-                String path = In.class.getResource("").getPath() + "..//..//..//..//t03.txt";
+                String path = In.class.getResource("").getPath() + "..//..//..//t03.txt";
                 FileReader fr = new FileReader(path);
                 bufr = new BufferedReader(fr);
             } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

@@ -11,6 +11,8 @@ public class Bag<T> implements Iterable<T> {
 
     private T data;
 
+    private int size = 0;
+
     private Bag<T> next;
 
     private Bag<T> curr;
@@ -30,6 +32,7 @@ public class Bag<T> implements Iterable<T> {
             curr.next = new Bag<T>(node);
             curr = curr.next;
         }
+        this.size++;
     }
 
     public T getData() {
@@ -46,6 +49,19 @@ public class Bag<T> implements Iterable<T> {
 
     public void setNext(Bag<T> next) {
         this.next = next;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void remove(T i){
+        Bag<T> position=curr;
+        while (position!=null){
+            if(position.data==i){
+                return;
+            }
+        }
     }
 
     @Override

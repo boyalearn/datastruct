@@ -24,8 +24,8 @@ public class CCTest {
 		}
 		for(int i=0;i<M;i++){
 			Bag<Integer> adj=components[i];
-			for(Bag<Integer> data:adj){
-				System.out.print(data.getData()+" ");
+			for(Integer data:adj){
+				System.out.print(data+" ");
 			}
 			System.out.println();
 		}

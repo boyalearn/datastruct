@@ -2,8 +2,6 @@ package com.xdata.graph;
 
 import org.junit.Test;
 
-import com.xdata.graph.algorithmic.SearchDepthFirst;
-
 public class DepthFirstSearchTest {
 	@Test
 	public void testOne(){

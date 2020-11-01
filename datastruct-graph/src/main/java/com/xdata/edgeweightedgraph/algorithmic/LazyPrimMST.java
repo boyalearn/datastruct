@@ -42,9 +42,9 @@ public class LazyPrimMST implements MST{
 	}
 	private void visit(EdgeWeightedGraph G,int v) {
 		marked[v]=true;
-		for(Bag<Edge> e:G.adj(v)) {
-			if(!marked[e.getData().other(v)]) {
-				pq.insert(e.getData());
+		for(Edge e:G.adj(v)) {
+			if(!marked[e.other(v)]) {
+				pq.insert(e);
 			}
 		}
 	}
