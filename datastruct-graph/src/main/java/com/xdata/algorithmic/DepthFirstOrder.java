@@ -1,11 +1,10 @@
-package com.xdata.digraph.algorithmic;
+package com.xdata.algorithmic;
 
 import java.util.Queue;
 import java.util.Stack;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import com.xdata.basestruct.Bag;
-import com.xdata.digraph.struct.Digraph;
+import com.xdata.digraph.DiGraph;
 
 /**
  * 深度优先的排序
@@ -22,7 +21,7 @@ public class DepthFirstOrder {
 	
 	private Stack<Integer> reversePost;      //所有顶点的逆后序排列
 	
-	public DepthFirstOrder(Digraph G) {
+	public DepthFirstOrder(DiGraph G) {
 		pre  = new LinkedBlockingQueue<Integer>();
 		post = new LinkedBlockingQueue<Integer>();
 		reversePost=new Stack<Integer>();
@@ -35,12 +34,12 @@ public class DepthFirstOrder {
 		}
 		
 	}
-	private void dfs(Digraph G,int v) {
+	private void dfs(DiGraph G, int v) {
 		pre.add(v);
 		marked[v]=true;
-		for(Bag<Integer> w:G.adj(v)) {
-			if(!marked[w.getData()]) {
-				dfs(G,w.getData());
+		for(Integer w:G.adj(v)) {
+			if(!marked[w]) {
+				dfs(G,w);
 			}
 		}
 		post.add(v);
@@ -59,7 +58,7 @@ public class DepthFirstOrder {
 	}
 	
 	public static void main(String[] args) {
-		Digraph G=new Digraph();
+		DiGraph G=new DiGraph();
 		DepthFirstOrder depthFirstOrder=new DepthFirstOrder(G);
 		
 		Queue<Integer> pre=(Queue<Integer>)depthFirstOrder.pre();

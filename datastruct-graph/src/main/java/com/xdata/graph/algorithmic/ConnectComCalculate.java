@@ -1,7 +1,7 @@
 package com.xdata.graph.algorithmic;
 
-import com.xdata.basestruct.Bag;
-import com.xdata.graph.struct.Graph;
+import com.xdata.Bag;
+import com.xdata.graph.Graph;
 
 /**
  * 
@@ -38,9 +38,9 @@ public class ConnectComCalculate {
 		marked[v]=true;
 		id[v]=count;
 		Bag<Integer> adj=G.adj(v);
-		for(Bag<Integer> data:adj){
-			if(!marked[data.getData()]){
-				dfs(G,data.getData());
+		for(int data:adj){
+			if(!marked[data]){
+				dfs(G,data);
 			}
 		}
 	}

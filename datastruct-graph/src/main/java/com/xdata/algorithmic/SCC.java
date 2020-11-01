@@ -1,4 +1,4 @@
-package com.xdata.digraph.algorithmic;
+package com.xdata.algorithmic;
 
 /**
  * 强连通分量

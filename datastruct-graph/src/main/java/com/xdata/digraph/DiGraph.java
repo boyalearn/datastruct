@@ -1,4 +1,4 @@
-package com.xdata.edgeweightedgraph.struct;
+package com.xdata.digraph;
 
 import com.xdata.Bag;
 
@@ -7,35 +7,64 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class EdgeWeightedGraph {
+/**
+ * 有向图。在无向图的基础上取消反向边。
+ *
+ * @author zouhuixing
+ */
+public class DiGraph {
 
-    private int V;
-
+    /**
+     * 边的数量
+     */
     private int E;
 
-    private Bag<Edge>[] adj;
+    /**
+     * 顶点的数量
+     */
+    private final int V;
 
-    @SuppressWarnings("unchecked")
-    public EdgeWeightedGraph(int V) {
+
+    /**
+     * 邻接表
+     */
+    private Bag<Integer>[] table;
+
+
+    public DiGraph(int V) {
         this.V = V;
         this.E = 0;
-        adj = (Bag<Edge>[]) new Bag[V];
+        table = (Bag<Integer>[]) new Bag[V];
         for (int v = 0; v < V; v++) {
-            adj[v] = new Bag<Edge>();
+            table[v] = new Bag<Integer>();
         }
     }
 
-    public EdgeWeightedGraph() {
+    public DiGraph() {
         this(In.readInt());
         int E = In.readInt();
         for (int i = 0; i < E; i++) {
             String[] line = In.readStr().split("[ ]");
             int v = Integer.valueOf(line[0]);
             int w = Integer.valueOf(line[1]);
-            double weight = Double.valueOf(line[2]);
-            Edge e = new Edge(v, w, weight);
-            addEdge(e);
+            addEdge(v, w);
         }
+    }
+
+    public DiGraph reverse() {
+        DiGraph R = new DiGraph(V);
+        for (int v = 0; v < V; v++) {
+            Bag<Integer> data = adj(v);
+            for (Integer d : data) {
+                R.addEdge(d, v);
+            }
+        }
+        return R;
+    }
+
+    public void addEdge(int v, int w) {
+        table[v].add(w);
+        E++;
     }
 
     public int V() {
@@ -46,26 +75,8 @@ public class EdgeWeightedGraph {
         return E;
     }
 
-    public void addEdge(Edge e) {
-        int v = e.either(), w = e.other(v);
-        adj[v].add(e);
-        adj[w].add(e);
-    }
-
-    public Iterable<Edge> adj(int v) {
-        return adj[v];
-    }
-
-    public Bag<Edge> edges() {
-        Bag<Edge> b = new Bag<Edge>();
-        for (int v = 0; v < V; v++) {
-            for (Edge e : adj[v]) {
-                if (e.other(v) > v) {
-                    b.add(e);
-                }
-            }
-        }
-        return b;
+    public Bag<Integer> adj(int v) {
+        return table[v];
     }
 
 
@@ -75,7 +86,7 @@ public class EdgeWeightedGraph {
 
         static {
             try {
-                String path = In.class.getResource("").getPath() + "..//..//..//..//tinyEWG.txt";
+                String path = In.class.getResource("").getPath() + "..//..//..//..//t03.txt";
                 FileReader fr = new FileReader(path);
                 bufr = new BufferedReader(fr);
             } catch (FileNotFoundException e) {
@@ -102,4 +113,5 @@ public class EdgeWeightedGraph {
             }
         }
     }
+
 }

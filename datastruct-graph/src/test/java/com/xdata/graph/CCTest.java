@@ -1,9 +1,8 @@
 package com.xdata.graph;
 
 import org.junit.Test;
-import com.xdata.basestruct.Bag;
+import com.xdata.Bag;
 import com.xdata.graph.algorithmic.ConnectComCalculate;
-import com.xdata.graph.struct.Graph;
 
 public class CCTest {
 	

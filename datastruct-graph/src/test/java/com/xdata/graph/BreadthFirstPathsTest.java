@@ -5,7 +5,6 @@ import java.util.Stack;
 import org.junit.Test;
 
 import com.xdata.graph.algorithmic.SearchPathBreadthFirst;
-import com.xdata.graph.struct.Graph;
 
 public class BreadthFirstPathsTest {
 	@Test

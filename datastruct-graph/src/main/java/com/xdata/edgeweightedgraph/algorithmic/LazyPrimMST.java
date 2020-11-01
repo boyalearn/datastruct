@@ -3,7 +3,7 @@ package com.xdata.edgeweightedgraph.algorithmic;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import com.xdata.basestruct.Bag;
+import com.xdata.Bag;
 import com.xdata.edgeweightedgraph.MST;
 import com.xdata.edgeweightedgraph.struct.Edge;
 import com.xdata.edgeweightedgraph.struct.EdgeWeightedGraph;

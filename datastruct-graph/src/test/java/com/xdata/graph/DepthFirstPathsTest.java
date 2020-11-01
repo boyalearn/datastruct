@@ -4,7 +4,6 @@ import java.util.Stack;
 import org.junit.Test;
 
 import com.xdata.graph.algorithmic.SearchPathDepthFirst;
-import com.xdata.graph.struct.Graph;
 
 public class DepthFirstPathsTest {
 	@Test

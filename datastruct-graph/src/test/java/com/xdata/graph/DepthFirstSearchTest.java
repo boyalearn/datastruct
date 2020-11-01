@@ -3,7 +3,6 @@ package com.xdata.graph;
 import org.junit.Test;
 
 import com.xdata.graph.algorithmic.SearchDepthFirst;
-import com.xdata.graph.struct.Graph;
 
 public class DepthFirstSearchTest {
 	@Test

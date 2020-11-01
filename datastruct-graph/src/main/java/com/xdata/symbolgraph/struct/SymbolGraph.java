@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.xdata.graph.struct.Graph;
+import com.xdata.graph.Graph;
 import com.xdata.utils.StringUtil;
 
 /**

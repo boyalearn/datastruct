@@ -4,9 +4,8 @@ import java.util.Stack;
 
 import org.junit.Test;
 
-import com.xdata.basestruct.Bag;
+import com.xdata.Bag;
 import com.xdata.graph.algorithmic.SearchPathBreadthFirst;
-import com.xdata.graph.struct.Graph;
 import com.xdata.symbolgraph.struct.SymbolGraph;
 
 public class SymbolGraphTest {

@@ -1,14 +1,13 @@
-package com.xdata.graph.struct;
+package com.xdata.graph;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.xdata.basestruct.Bag;
-import com.xdata.graph.IGraph;
+import com.xdata.Bag;
 
-public class Graph implements IGraph{
+public class Graph{
 	
 	//±ßÊý
 	private int E;

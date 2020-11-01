@@ -1,6 +1,6 @@
 package com.xdata.graph.algorithmic;
 
-import com.xdata.graph.struct.Graph;
+import com.xdata.graph.Graph;
 
 /**
  * ´ıÊµÏÖ
