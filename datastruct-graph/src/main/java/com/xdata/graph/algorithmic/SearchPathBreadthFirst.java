@@ -19,7 +19,7 @@ public class SearchPathBreadthFirst {
 		bfs(G,s);
 	}
 	private void bfs(Graph G,int s){
-		Queue<Integer> queue=new LinkedBlockingQueue<Integer>();
+		Queue<Integer> queue=new LinkedBlockingQueue<>();
 		marked[s]=true;
 		queue.add(s);
 		while(!queue.isEmpty()){
