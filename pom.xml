@@ -9,11 +9,11 @@
 	    <module>datastruct-linkedlist</module>
 	    <module>datastruct-queue</module>
 	    <module>datastruct-stack</module>
-		<module>datastruct-tree</module>
-		<module>datastruct-graph</module>
-		<module>datastruct-algorithmic</module>
-        <module>datastruct-algorithmic-leetcode</module>
-    </modules>
+	    <module>datastruct-tree</module>
+	    <module>datastruct-graph</module>
+	    <module>datastruct-algorithmic</module>
+            <module>datastruct-algorithmic-leetcode</module>
+        </modules>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
