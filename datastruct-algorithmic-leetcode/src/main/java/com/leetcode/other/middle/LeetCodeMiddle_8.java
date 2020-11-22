@@ -1,6 +1,6 @@
-package com.leetcode.other;
+package com.leetcode.other.middle;
 
-public class LeetCode_8 {
+public class LeetCodeMiddle_8 {
     public int myAtoi(String s) {
         int len = s.length();
         if (s.isEmpty()) {
@@ -50,6 +50,6 @@ public class LeetCode_8 {
 
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode_8().myAtoi("-2147483649"));
+        System.out.println(new LeetCodeMiddle_8().myAtoi("-2147483649"));
     }
 }

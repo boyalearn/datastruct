@@ -1,4 +1,4 @@
-package com.leetcode.other;
+package com.leetcode.other.simple;
 
 public class LeetCodeSimple_53 {
 

@@ -1,4 +1,4 @@
-package com.leetcode.other;
+package com.leetcode.other.middle;
 
 import java.util.*;
 
