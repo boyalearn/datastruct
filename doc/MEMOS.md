@@ -28,6 +28,33 @@ step3 合并：将各个子问题的解合并为原问题的解。
 
 ```java
 
+   public int[] divideConquer(int[] data) {
+        //最小子问题的处理方式
+        if (data.length <= 2) {
+            if (data.length == 2) {
+                if (data[0] > data[1]) {
+                    int tmp = data[0];
+                    data[0] = data[1];
+                    data[1] = tmp;
+                }
+            }
+            return data;
+        }
+        
+        //任务分解
+        List<Integer> left = new LinkedList<>();
+        List<Integer> right = new LinkedList<>();
+        for (int i = 1; i < data.length; i++) {
+            if (data[i] > data[0]) {
+                right.add(data[i]);
+            } else {
+                left.add(data[i]);
+            }
+        }
+
+        //合并子任务结果
+        return merge(divideConquer(toArray(left)), data[0], divideConquer(toArray(right)));
+    }
 
 ```
 
